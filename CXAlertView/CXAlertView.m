@@ -326,7 +326,7 @@ static BOOL __cx_statsu_prefersStatusBarHidden;
     [self.alertWindow makeKeyAndVisible];
     [self validateLayout];
 
-    [self transitionInCompletion:^{
+//    [self transitionInCompletion:^{
         if (self.didShowHandler) {
             self.didShowHandler(self);
         }
@@ -337,7 +337,7 @@ static BOOL __cx_statsu_prefersStatusBarHidden;
         if (index < [CXAlertView sharedQueue].count - 1) {
             [self dismissWithCleanup:NO]; // dismiss to show next alert view
         }
-    }];
+//    }];
 }
 
 - (void)dismiss
@@ -764,26 +764,26 @@ static BOOL __cx_statsu_prefersStatusBarHidden;
 // Transition
 - (void)transitionInCompletion:(void(^)(void))completion
 {
-//    _containerView.alpha = 0;
-//    _containerView.transform = CGAffineTransformMakeScale(1.2, 1.2);
-//
-//    _blurView.alpha = 0.9;
-//    _blurView.transform = CGAffineTransformMakeScale(1.2, 1.2);
-//
-//    [UIView animateWithDuration:0.3
-//                     animations:^{
-//                         _containerView.alpha = 1.;
-//                         _containerView.transform = CGAffineTransformMakeScale(1.0,1.0);
-//
-//                         _blurView.alpha = 1.;
-//                         _blurView.transform = CGAffineTransformMakeScale(1.0,1.0);
-//                     }
-//                     completion:^(BOOL finished) {
-//                         [_blurView blur];
-//                         if (completion) {
-//                             completion();
-//                         }
-//                     }];
+    _containerView.alpha = 0;
+    _containerView.transform = CGAffineTransformMakeScale(1.2, 1.2);
+
+    _blurView.alpha = 0.9;
+    _blurView.transform = CGAffineTransformMakeScale(1.2, 1.2);
+
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         _containerView.alpha = 1.;
+                         _containerView.transform = CGAffineTransformMakeScale(1.0,1.0);
+
+                         _blurView.alpha = 1.;
+                         _blurView.transform = CGAffineTransformMakeScale(1.0,1.0);
+                     }
+                     completion:^(BOOL finished) {
+                         [_blurView blur];
+                         if (completion) {
+                             completion();
+                         }
+                     }];
 }
 
 - (void)transitionOutCompletion:(void(^)(void))completion
